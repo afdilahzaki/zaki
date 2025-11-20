@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}RPL Django{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'mahasiswa/css/style.css' %}?v=2">
+    <style>
+        /* Tambahan styling sederhana untuk navbar */
+        nav {
+            background-color: #004aad;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-left">
+                <h1 style="color:white; margin:0;">Praktikum RPL - Django</h1>
+            </div>
+            <div class="nav-right">
+                <div class="nav-right">
+                 {% if user.is_authenticated %}
+                <span style="color:white; margin-right:10px;">Halo, {{ user.username }}</span>
+                <a href="{% url 'index' %}">Dashboard</a>
+                <a href="{% url 'logout' %}">Logout</a>
+                {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+</div>
+
+            </div>
+        </nav>
+    </header>
+
+    <main style="padding:20px;">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer style="background:#f5f5f5; text-align:center; padding:10px;">
+        <p>&copy; 2025 - Praktikum</p>
+    </footer>
+
+    <script src="{% static 'mahasiswa/js/main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends 'mahasiswa/base.html' %}
+{% load static %}
+{% block content %}
+
+<section style="padding: 40px; max-width: 800px; margin: 0 auto;">
+    <h2 style="color: #004aad;">Blog Pribadi Saya</h2>
+    <p style="line-height: 1.6; color: #333;">
+        Halo! 👋 Selamat datang di blog pribadi saya.
+        Di sini saya berbagi cerita, pengalaman belajar, dan tips seputar dunia pemrograman, khususnya Django dan pengembangan web.
+    </p>
+
+    <article style="margin-top: 30px;">
+        <h3 style="color: #222;">Belajar Django untuk Pemula</h3>
+        <p style="line-height: 1.6;">
+            Django adalah framework web berbasis Python yang powerful, cepat, dan sangat populer.
+            Framework ini memudahkan developer untuk membuat aplikasi web tanpa harus menulis ulang banyak kode dasar.
+        </p>
+    </article>
+
+    <article style="margin-top: 30px;">
+        <h3 style="color: #222;">Mengapa Saya Suka Django?</h3>
+        <ul>
+            <li>Struktur kodenya rapi dan mudah dipahami</li>
+            <li>Mendukung autentikasi dan admin panel otomatis</li>
+            <li>Berbasis Python, jadi mudah dikembangkan</li>
+        </ul>
+    </article>
+</section>
+
+{% endblock %}

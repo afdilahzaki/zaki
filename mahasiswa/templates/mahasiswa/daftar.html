@@ -1,0 +1,34 @@
+{% extends 'mahasiswa/base.html' %}
+{% load static %}
+{% block content %}
+<h2>Daftar Mahasiswa</h2>
+<div class="tombol-container">
+<a href="{% url 'tambah_mahasiswa' %}" class="btn btn-add">+ Tambah Mahasiswa</a>
+</div>
+<table border="1">
+  <tr>
+    <th>NIM</th>
+    <th>Nama</th>
+    <th>Program Studi</th>
+    <th>Angkatan</th>
+    <th>Aksi</th>
+  </tr>
+  {% for mhs in mahasiswas %}
+  <tr>
+    <td>{{ mhs.nim }}</td>
+    <td>{{ mhs.nama }}</td>
+    <td>{{ mhs.programstudi }}</td>
+    <td>{{ mhs.angkatan }}</td>
+    <td>
+      <a href="{% url 'edit_mahasiswa' mhs.id %}" class="btn btn-edit">Edit</a>
+      <a href="{% url 'hapus_mahasiswa' mhs.id %}" class="btn btn-delete">Hapus</a>
+    </td>
+
+  </tr>
+  {% empty %}
+  <tr>
+    <td colspan="3">Belum ada data.</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

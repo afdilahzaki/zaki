@@ -1,0 +1,97 @@
+{% extends 'mahasiswa/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .form-container {
+        background-color: #fff;
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        width: 400px;
+        margin: 40px auto;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #333;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    label {
+        font-weight: bold;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        color: #444;
+    }
+    input[type="text"] {
+        padding: 8px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+    button {
+        margin-top: 20px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 15px;
+    }
+    button[type="submit"] {
+        background-color: #007bff;
+        color: white;
+    }
+    button.btn-kembali {
+        background-color: #6c757d;
+        color: white;
+        margin-top: 10px;
+    }
+    button:hover {
+        opacity: 0.9;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+        text-align: center;
+    }
+    li {
+        color: red;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="form-container">
+    <h2>Tambah Mahasiswa</h2>
+
+    {% if messages %}
+      <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="nim">NIM:</label>
+        <input type="text" id="nim" name="nim" required>
+
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama" required>
+
+        <label for="programstudi">Program Studi:</label>
+        <input type="text" id="programstudi" name="programstudi" required>
+
+        <label for="angkatan">Angkatan:</label>
+        <input type="text" id="angkatan" name="angkatan" required>
+
+        <button type="submit">Simpan</button>
+        <a href="{% url 'daftar_mahasiswa' %}">
+            <button type="button" class="btn-kembali">Kembali</button>
+        </a>
+    </form>
+</div>
+{% endblock %}
